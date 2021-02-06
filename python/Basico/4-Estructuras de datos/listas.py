@@ -5,8 +5,8 @@
 lista_1 = list()
 lista_2 = []
 
-# Add elements
-lista_3 = [1,2,3,True,False,"HOLA"]     # Ddominio: 0-N
+# Elements
+lista_3 = [1,2,3,True,False,"HOLA"]     # Dominio: 0-N
 
 # Elemento de la lista
 lista_3[<posicion>]
