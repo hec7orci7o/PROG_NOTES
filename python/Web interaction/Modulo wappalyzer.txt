@@ -1,0 +1,16 @@
+Wappalyzer es desde hace tiempo una completa utilidad
+online que permite la detección de tecnologías presentes
+en sitios webs, que va desde la posibilidad de detectar
+sistemas de gestión de contenido como WordPress, Joomla,
+Drupal, etc, tecnologías implementadas durante el desarrollo
+del sitio como PHP, Python o Perl,  frameworks implementados
+como Django, Laravel, Ruby on Rails entre muchos otros al igual
+que tecnologías analíticas como Google Analytics entre 1,168
+tecnologías distintas las cuales soporta, acá un listado
+completo de ellas:   https://www.wappalyzer.com/technologies
+
+Desde luego, con Python, Wappalyzer no se quedaría atrás!
+Lanzaron una librería la cual nos permite tener toda la
+potencia de Wappalyzer dentro de nuestro código
+
+instalar mediante: "pip install python-Wappalyzer"

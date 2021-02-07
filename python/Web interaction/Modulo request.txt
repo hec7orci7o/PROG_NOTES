@@ -1,0 +1,22 @@
+"requests" es una librería es dedicada especialmente al trabajo con peticiones HTTP,
+en un principio para realizar está tarea se utilizaba otra librería conicidad como "urllib",
+sin embargo, está presentaba sus complicaciones e inconvenientes así como la necesidad de aplicar
+un mayor trabajo a la hora de escribir código
+
+"requests" hace que la interacción con peticiones HTTP sea más fácil y versátil para trabajar
+completamente con un API reconstruida y soporta metodos como:
+    - GET
+    - POST
+    - PUT
+    - DELETE
+
+También permite otras opciones como:
+    - Sesiones con persistencia de Cookies
+    - Descompresión automática
+    - Carga de archivos
+    - Soporte de respuesta unicode
+
+    + entre otras muchas
+
+instalar mediante: "pip install requests"
+

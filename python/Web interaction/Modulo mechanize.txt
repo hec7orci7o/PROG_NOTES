@@ -1,0 +1,25 @@
+Al igual que el modulo WWW::Mechanize del lenguaje Perl,
+un modulo dedicado especialmente a la interacción del lenguaje
+con sitios web, existe una versión de machanize para Python,
+sin embargo, surge la pregunta. ¿Qué tiene de nuevo mechanize
+a diferencia de urllib2 y requests, modulos vistos previamente?
+
+A diferencia de estos dos anteriores, mechanize proporciona una
+alta gama de herramientas, clases, funciones y módulos disponibles
+para interactuar con sitios, como: la manipulación de formularios,
+historiales, Cookies, proxies. En pocas palabras, con mechanize
+tenemos un navegador tan completo como Chrome o Firefox y lo mejor!
+- Desde la consola, desde la que podemos manipular distintos objetos
+de los que se compone un navegador real.
+
+Mechanize está disponible para todo tipo de sistemas operativos y
+es compatible con urllib2(Por lo que podemos usar algunas funciones 
+que tiene urllib2 dentro de mechanize, como 'urlopen()'), tiene soporte
+para protocolos HTTPS, HTTP, FTP entre otros.
+
+Mechanize puede también combinarse con otros módulos como BeautifulSoup
+para mejorar los resultados en pantalla.
+
+instalar mediante: "pip install mechanize"
+
+(Documentación del modulo completa: https://mechanize.readthedocs.io/en/latest/ )
