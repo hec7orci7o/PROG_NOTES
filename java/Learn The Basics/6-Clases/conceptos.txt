@@ -1,0 +1,120 @@
+Modificadores de acceso:
+    public:  Permite usar el atributo o método en cualquier clase
+    private: Permite usar el atributo o método solo en su clase
+    protected: Permite usar el atributo o método en la misma clase o clases hijas
+
+Encapsulamiento y métodos accesores (Setters y Getters):
+    // Metodo Setter:
+    // No valido para cambiar datos tipo final | constantes 
+    public void set<Name>(<type> <var_name>) {
+        this.<var_name> = var_name;
+    }
+
+    // Metodo Getter:
+    public <type> set<Name>() {
+        return <var_name>;
+    }
+
+Miembros estaticos de una clase:
+    Los miembros estaticos hacen que al poner la palabra clave "static"
+    los métodos o variables que posea el objeto con la palabra clave dejen
+    de pertenecer al objeto y pertenezcan a la clase, es decir, por ejemplo:
+
+    Si tenemos: 
+        private String frase = "hola"
+    
+    al intentar cambiar el valor de la variable frase ocurrira lo siguiente:
+        ob2.frase = "adios";   // el ob1.frase = "hola" y el ob2.frase = "adios"
+
+    Ahora, si tenemos:
+        private static String frase = "hola"
+
+    al intentar cambiar el valor de la variable frase ocurrira lo siguiente:
+        ob2.frase = "adios";   // el ob1.frase = y el ob2.frase serán igual a: "adios"
+
+    Lo mismo ocurrira con los métodos:
+
+        public static int sumar(int num1, int num2) {
+            return num1 + num2;
+        }
+
+        clase.sumar(n1,n2);
+
+Herencia:
+    extends: Palabra clave que indica que la clase que use esta key word sera heredera o hija
+             de otra.
+             + public class Estudiante extends Persona
+             La clase Estudiante hereda las variables y métodos de Persona
+
+    super: Funcion/palabra clave que que indica que los parametros que haya entre '(' y ')'
+           ya estan inicializados
+           + super(nombre,edad,sexo)
+
+Clases y métodos final:
+    final public class figura {}    // Este tipo de clases no puede heredarse
+    public final void dibujar() {}  // No puede haber métodos con el mismo nombre en 
+                                    // clases hijas de esta
+
+// La sobrecarga de métodos != La sobre escritura de miembros
+
+Sobrecarga de métodos:
+    public void cantar() {}
+    public void cantar(String cancion) {}
+
+Sobre escritura de métodos:
+    Se basa en que al heredar métodos de una clase, al poner el decorador @Override, el método
+    de la clase padre no se usará en la clase hija sino que se usara aquel metodo en el que se 
+    hay colocado dicho identificador:
+
+    // metodo de la clase padre:
+    public void comer() {
+        comer();    // realiza la accion de comer
+    }
+
+    // metodo de la clase hija:
+    @Override
+    public void comer() {
+        comer(cubiertos);    // realiza la accion de comer con cubiertos
+    }
+
+Clases abstractas:
+    - Se utilizan solo como super clases: Deben tener clases hijas
+    - No se pueden instanciar objetos
+    - Sirve para crear super clases apropiadas a partir de la cual heredarán otras clases
+
+    public abstract class serVivo {
+        public abstract void alimentarse(); // en las clases hijas hay que usar el @Override
+    }
+
+Polimorfismo:   poli = muchos, morfismo = forma -> muchas formas
+    - Para que haya un Polimorfismo debe haber Herencia.
+
+    - En una relación de tipo herencia, un objeto de la superclase puede almacenar 
+      un objeto de cualquiera de sus subclases
+      Esto significa que la clase padre o superclase es compatible con los tipos que
+      derivan de ella. Pero no al revés
+
+Conversión ascendente de tipos (Upcasting)  // parte del Polimorfismo
+    // forma larga:
+    VehiculoTurismo miVehiculo = new VehiculoTurismo(4,"1234ABC","SEAT","LEON");
+    Vehiculo vehiculo = miVehiculo;
+
+    // forma corta:
+    Vehiculo vehiculo = new VehiculoTurismo(4,"1234ABC","SEAT","LEON");
+
+    
+Conversión descendente de tipos (Downcasting)  // parte del Polimorfismo
+    Vehiculo vehiculo = new VehiculoTurismo(4,"1234ABC","SEAT","LEON"); // Upcasting
+    VehiculoTurismo nuevoVehiculo = (VehiculoTurismo) vehiculo;         // Downcasting
+
+Herencia Múltiple:
+    Hace referencia a la caracteristica de los lenguajes de POO en la que una clase hereda atributos 
+    y metodos de mas de una super clase.
+    En java no se puede realizar directamente pero se puede implementar con las interfaces.
+
+    Interfaces:
+        - Permite simular la herencia multiple
+        - La iterfaz solo es public o default
+        - Todos sus métodos son abstractos
+        - Todos sus atriutos son final/constantes
+
