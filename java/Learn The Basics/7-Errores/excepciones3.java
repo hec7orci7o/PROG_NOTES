@@ -9,7 +9,7 @@ public class excepciones3 {
     }
 
     public void operaciones2() {
-        // try catch para excepciones no veriicadas
+        // try catch para excepciones no verificadas
 
         try {
             operaciones();
