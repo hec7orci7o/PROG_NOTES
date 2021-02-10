@@ -1,0 +1,43 @@
+Base de datos: Almacen que nos permite guardar grandes cantidades de informacion de forma
+    organizada para que luego podamos encntrar y utilizar facilmente.
+
+Modelos:
+    - Jerarquicas
+    - Red
+    - Transaccionales
+    - Relacionales: Coleccion de datos organizados en un conjunto de tablas formalmente
+            descritas desde la que se puede acceder a los datos o volver a montarlos de
+            muchas maneras diferentes sin tener que reorganizar las tablas de la base.
+    - Multidimensionales
+    - Orientadas a objetos
+    - Documentales
+    - Deductivas
+
+Gestores de bases de datos:
+    - MySQL
+    - Microsoft SQL Server
+    - Oracle
+    - Microsoft Access
+    - PostgreSQL
+    - DB2
+
+Conceptos de Relaciones entre tablas:
+    Para que las tablas se puedan seleccionar, encontrar y procesar de forma rápida y eficaz,
+    es necesario que las tablas no se encuentren aisladas unas de otras.
+
+    + Las tablas tienen que estar relacionadas con otras formando estructuras Relacionales.
+    + La relacion es una asociacion establecida entre campos comunes (columnas) en dos tablas.
+    + Los campos que entran en relacion pueden llamarse de distinta manera, pero tienen que ser del mismo tipo
+
+    Tipos de relaciones:
+        - Uno a uno: Un registro A se relaciona con un B y este a su vez se relaciona con el A.
+                     La clave primaria del registro A se relaciona con la foranea del B.
+        - Uno a muchos: Un registro A se relaciona con un B pero este B se puede relacionar con otros muchos.
+                        EJ: Como una categoria puede tener muchos productos, la clave primaria se coloca en
+                            la tabla categoria y la foranea en la de producto.
+        - Muchos a muchos: A cada registro de la tabla A, se le pueden asociar varios registros de la tabla B, 
+                           y cada registro de la tabla B puede estar relacionado con mas de un registro de la tabla A.
+                           Para realizar estas relaciones se usa una tercera tabla de unión que contendrá un idUnion, 
+                           y las claves foraneas correspondientes con las otras tablas a unir
+
+Vistas: Formas de guardar consultas muy extensas

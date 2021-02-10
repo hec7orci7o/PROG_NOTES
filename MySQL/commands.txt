@@ -1,0 +1,145 @@
+#Creacion de la BD
+create database tienda;
+
+# Seleccion de la BD
+use tienda;
+
+# Creacion de tablas
+create table producto(
+	idProducto int auto_increment primary key,	-- La clave primaria siempre es not null
+    nombre varchar(50) not null,
+    precio decimal(10,2) not null,
+    fecha_venta date default '0000-00-00'	-- año-mes-dia
+);
+
+# Muestra las tablas
+show tables;
+
+# Muestra las columnas de la tabla producto
+show columns from producto;
+
+# Elimina la tabla producto
+drop table producto;
+
+# Elimina la base de datos
+drop database tienda;
+
+# Inserta registros a las tablas
+insert into categoria values (NULL,"Bebidas");
+insert into categoria (nombre) values ("Aceites");
+insert into categoria (nombre) values
+("Detergentes"),("Galletas"),("Chocolates"),("Frituras");
+
+# Mostrar contenido de la tablas <tabla>
+select * from categoria     -- Muestra todos los registros dentro de la tabla categoria
+select nombre,precio,cantidad from producto;
+
+# Alias
+select nombre as "Nombre del producto" from producto;
+
+# Elimina de la tabla producto segun un filtro
+delete from producto where idCategoria=2;
+
+
+# Modificar contenido de un registro
+update categoria set nombre= "Bebida con gas" where idCategoria=1;
+update producto set cantidad=37 where idproducto=15
+
+# Consultas sencillas
+select nombre,precio,cantidad from producto where idCategoria=1;
+select nombre,precio,cantidad from producto where cantidad > 30;
+select min(cantidad) as "cantidad minima" ,max(cantidad) as "cantidad maxima" from producto;
+select nombre,precio from producto order by nombre asc;	-- desc
+
+#consultas "+ avanzadas"
+select * from product where <condicion>;
+la condicion puede ser algo como:
+    precio is null;
+    precio between X and Y;
+    precio not between X and Y;
+    precio != X;    precio <> X
+    precio < X; <, >, <=, >=
+    # Los operadores aritmeticos tambien estan disponibles
+    nombre like 'Gaseosa%'; # Busca todos los registros que tienen un nombre que comienzan con gaseoso
+    nombre like '%o';       # Productos que acaban en o
+    nombre like '%osa%';    # Productos que contienen las palabra osa en el nombre
+
+# Consulta en varias tablas
+select * from producto as p
+inner join categoria as c on p.idCategoria=c.idCategoria;
+
+select p.nombre, p.precio, p.cantidad, c.nombre as 'categoria' from producto as p
+inner join categoria as c on p.idCategoria=c.idCategoria;
+
+select p.nombre, p.precio, p.cantidad, c.nombre as 'categoria' from producto as p
+inner join categoria as c on p.idCategoria=c.idCategoria
+where p.cantidad > 32;
+
+select p.nombre as 'producto', cb.serial as 'codigo barras' from producto as p
+inner join codigoBarras cb on p.idProducto = cb.idProducto;
+
+select p.nombre as 'producto', cb.serial as 'codigo barras', c.nombre as 'categoria', pvv.nombre as 'Proveedor' from producto as p
+inner join codigobarras cb on p.idproducto = cb.idProducto
+inner join categoria c on p.idCategoria = c.idcategoria
+inner join union_pp as upp on p.idproducto = upp.idProducto
+inner join proveedores as pvv on pvv.idproveedores = upp.idProveedor
+where p.cantidad>30;
+
+# Vistas
+create view vista_5tablas as
+select p.nombre as 'producto', cb.serial as 'codigo barras', c.nombre as 'categoria', pvv.nombre as 'Proveedor' from producto as p
+inner join codigobarras cb on p.idproducto = cb.idProducto
+inner join categoria c on p.idCategoria = c.idcategoria
+inner join union_pp as upp on p.idproducto = upp.idProducto
+inner join proveedores as pvv on pvv.idproveedores = upp.idProveedor;
+
+select * from vista_5tablas;
+
+
+create view vista_producto_categoria as
+select p.nombre,p.precio,p.cantidad,c.nombre as 'categoria'
+from producto as p
+inner join categoria as c on p.idCategoria = c.idcategoria;
+
+select * from vista_producto_categoria;
+
+drop view vista_producto_categoria
+
+# Procedimientos almacenados
+delimiter //                   -- Crea un procedimiento
+create procedure productosXcategoria (in id int)
+begin
+	select * from producto where idCategoria=id;
+end//
+delimiter ;
+
+call productosXcategoria(1);    -- llama al procedimiento
+
+drop procedure productosXcategoria;     -- lo borra
+
+# Triggers: acciones que se realizan de forma automatica
+
+Delimiter |
+-- creamos un trigge que se ejecuta antes de insertar en mi tabla categoria
+create trigger insertarTemp before insert on categoria
+for each row	-- Por cada fila que inserte en la tabla categoria, inserta 
+begin			-- en una tabla (categoria temporal) el nombre de la categoria que este insertando
+	insert into temporal (categoria) values (new.nombre);
+end |
+
+insert into categoria (nombre) values ("Frituras");
+
+select * from categoria;
+select * from temporal;
+
+# Respaldo y restauracion de una BBDD
+    Desde MySQL workbench seguimos los siguientes pasos:
+    + Respaldo | Back Up:
+        server -> data export
+        seleccionamos la base de datos que se quiera guardar
+        selecionamos la localizacion donde la queramos guardar
+
+    + Restauracion:
+        server -> data import
+        seleccionamos la base de datos que se quiera importar
+        creamos una BBDD | seleccionamos una BBDD donde queramos guardar la restauracion
