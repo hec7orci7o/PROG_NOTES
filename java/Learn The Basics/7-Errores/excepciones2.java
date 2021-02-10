@@ -19,7 +19,7 @@ public class excepciones2 {
     }
 
     public void leerArchivo2() {
-        // try catch para excepciones veriicadas
+        // try catch para excepciones verificadas
 
         try {
             leerArchivo();
